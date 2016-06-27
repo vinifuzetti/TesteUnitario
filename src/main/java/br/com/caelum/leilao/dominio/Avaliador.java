@@ -13,6 +13,10 @@ public class Avaliador {
 	public void avalia(Leilao leilao){
 		menorDeTodos = leilao.getLances().isEmpty() ? 0:leilao.getLances().get(0).valor;
 		maiorDeTodos = 0;
+		
+		if (leilao.getLances().size() == 0){
+			throw new RuntimeException("Não é possível avaliar um leilãosemlances");
+		}
 		for (Lance lance : leilao.getLances()){
 			if (lance.getValor() > maiorDeTodos){
 				maiorDeTodos = lance.getValor();
